@@ -34,10 +34,33 @@ class Movie {
 
     createCard() {
         const cardSection = document.getElementById("cardContainer");
-        const imgContainer = document.createElement("img")
+        const card = document.createElement("section")
+        const imgContainer = document.createElement("div")
+        const img = document.createElement("img")
+        const titleContainer = document.createElement("div")
+        const title = document.createElement("p")
+        const overlay = document.createElement("div")
+        const description = document.createElement("p")
         
-        imgContainer.src = `https://www.themoviedb.org/t/p/w300_and_h450_bestv2/${this.image}`
-        cardSection.append(imgContainer)
+        img.src = `https://www.themoviedb.org/t/p/w300_and_h450_bestv2/${this.image}`
+        title.innerText = `${this.title}`
+        description.innerText = `${this.description}`
+
+        img.classList.add("img")
+        titleContainer.classList.add("title-container")
+        title.classList.add("title")
+        card.classList.add("card")
+        overlay.classList.add("overlay")
+        imgContainer.classList.add("img-container")
+        description.classList.add("description")
+        
+        overlay.append(description)
+        card.append(imgContainer)
+        imgContainer.append(overlay)
+        imgContainer.append(img)
+        titleContainer.append(title)
+        card.append(titleContainer)
+        cardSection.append(card)
     }
 }
 function changestyle (){
