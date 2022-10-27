@@ -126,7 +126,10 @@ submitButton.addEventListener("click", async (e) => {
 
         //creates an object for each movie
         for(let i = 0; i < noOfTitles; i++) {
-            results.push(new Movie(responseJson.results[i]))
+            console.log(responseJson.results[i])
+            if(!(responseJson.results[i].poster_path === null || responseJson.results[i].overview === "")){
+                results.push(new Movie(responseJson.results[i]))
+            }
         }
 
         //list of the top 3 results
