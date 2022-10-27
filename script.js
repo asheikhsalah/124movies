@@ -39,7 +39,7 @@ function changestyle (){
 
 const apiKey = 'cda101b027e0a6085e107b36f6767b3d'
 
-const submitButton = document.querySelector("#submit2");
+const submitButton = document.querySelector("#submit");
 const queryField = document.querySelector("#search")
 
 let page = 1
