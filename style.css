@@ -12,6 +12,8 @@ body {
     width: 100%;
     background: rgb(160,97,255);
 background: linear-gradient(120deg, rgba(160,97,255,1) 14%, rgba(182,52,182,1) 49%, rgba(255,0,26,1) 100%);
+background-position: center;
+background-size: cover;
     
     
 }
@@ -27,10 +29,9 @@ box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 backdrop-filter: blur(5px);
 -webkit-backdrop-filter: blur(5px);
 border: 1px solid rgba(255, 255, 255, 0.3);
-
-    
-    
 }
+
+
 h1 {
     color: white;
     font-weight: 700;
@@ -53,10 +54,9 @@ h1 {
     backdrop-filter: blur(9.2px);
     -webkit-backdrop-filter: blur(9.2px);
     border: 1px solid rgba(255, 255, 255, 0.35);
-display: flex;
-transition: ease-in-out 0.5s;
-border-radius: 60px;
-    
+    display: flex;
+    transition: ease-in-out 0.5s;
+    border-radius: 60px;
     width: auto;
     margin-bottom: 20px;
 }
@@ -94,12 +94,9 @@ input:focus {outline:none;}
 }
 #cardContainer {
     display: flex;
-    /* float: left;
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: auto;
-    grid-gap: 1rem; */
+    justify-content: center;
     flex-wrap: wrap;
-    max-width: 1200px;
+    max-width: 90%;
     margin-block: 2rem;
     gap: 2rem;
   }
@@ -115,8 +112,8 @@ img {
   .card {
     display: flex;
     flex-direction: column;
-    width: 400px;
-    height: 600px;
+    width: 300px;
+    height: 400px;
     overflow: hidden;
     box-shadow: 0 .1rem 1rem rgba(221, 58, 58, 0.3);
     border-radius: 2em;
@@ -139,19 +136,24 @@ img {
     margin-top: auto;
   }
 
+  main {
+    display: flex;
+    justify-content: center;
+  }
+
 footer {
     margin: 0;
     padding: 5px;
     text-align: center;
-    /* From https://css.glass */
-background: rgba(255, 255, 255, 0.2);
-
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(5px);
--webkit-backdrop-filter: blur(5px);
-border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 
 }
+
+
 
 @media (min-width : 600px) {
     header {

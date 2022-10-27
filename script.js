@@ -9,27 +9,35 @@ class Movie {
         this.image = jsonResult.poster_path
     }
 
-    createCard() {
-        let cardSection = document.getElementById("cardContainer");
-        cardSection.innerHTML += this.format()
-        console.log(this.image)
+    // createCard() {
+    //     let cardSection = document.getElementById("cardContainer");
+    //     cardSection.innerHTML += this.format()
+    //     console.log(this.image)
         
-    }
+    // }
 
-    format() {
-        return `
-        <div class="card">
-         <img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/${this.image}" alt="image">
-        <div class="card__body">
-            <h4 class="title"><b>${this.title}</b></h4>
-            <p class="description">${this.description}</p>
-            <p class="rating">rating: ${this.rating}</p>
-        </div>  
-        <div class="card__footer">
-        footer
-        </div>
-        </div> 
-`
+//     format() {
+//         return `
+//         <div class="card">
+//          <img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/${this.image}" alt="image">
+//         <div class="card__body">
+//             <h4 class="title"><b>${this.title}</b></h4>
+//             <p class="description">${this.description}</p>
+//             <p class="rating">rating: ${this.rating}</p>
+//         </div>  
+//         <div class="card__footer">
+//         footer
+//         </div>
+//         </div> 
+// `
+//     }
+
+    createCard() {
+        const cardSection = document.getElementById("cardContainer");
+        const imgContainer = document.createElement("img")
+        
+        imgContainer.src = `https://www.themoviedb.org/t/p/w300_and_h450_bestv2/${this.image}`
+        cardSection.append(imgContainer)
     }
 }
 function changestyle (){
