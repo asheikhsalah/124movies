@@ -6,7 +6,7 @@ const submitButton = document.querySelector("#submit");
 const queryField = document.querySelector("#search")
 
 let page = 1
-let adultBool = false
+
 
 let genres = {
     28:'Action',
@@ -51,8 +51,6 @@ class Movie {
         this.genre = Movie.findGenre(jsonResult.genre_ids)
     }
     
-        
-    
     createCard() {
         
         const cardSection = document.getElementById("cardContainer");
@@ -66,7 +64,9 @@ class Movie {
         
         img.src = `https://www.themoviedb.org/t/p/w300_and_h450_bestv2/${this.image}`
         title.innerText = `${this.title}`
-        description.innerText = `${this.description}`
+
+        description.innerText = `${this.description.substring(0,400)}..
+        ⭐ ${this.rating}`
 
         img.classList.add("img")
         titleContainer.classList.add("title-container")
@@ -86,6 +86,38 @@ class Movie {
     }
 
     static cardSection = document.getElementById("cardContainer");
+
+    static pageNumber = 1
+    static total_pages = 1
+
+    static getPages(responseJson) {
+        console.log('getPages is being called')
+        Movie.total_pages = responseJson.total_pages
+        if(Movie.total_pages < 1000) {
+            for(let i = 0; i < 3;i++) {
+                const pageContainer = document.getElementsByClassName("page-container")
+                const pageNumberContainer = document.createElement('div')
+                const pageNumber = document.createElement('p')
+
+                pageNumber.innerText = `${i}`
+                
+                pageNumberContainer.classList.add('page-number-container')
+
+                pageNumberContainer.append(pageNumber)
+
+                pageNumberContainer.addEventListener('click', (e) => {
+                    console.log('tyisahbdvoiyasbviosuybvis')
+                });
+
+                pageContainer.append(pageNumberContainer)
+            }
+        } else {
+            for(let i = 0; i < Movie.total_pages;i++) {
+
+            }
+        }
+
+    }
 
     static genres = {
         28:'Action',
@@ -180,10 +212,10 @@ function filterGenre(genres,data) {
 */ 
 
 
- function displayObject(element, inputType, number) {
+function displayObject(element, inputType, number) {
     element.addEventListener(`${inputType}`, async (e) => {
         let search = queryField.value;
-        let myQuery = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${search}&page=${page}&include_adult=${adultBool}`;
+        let myQuery = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${search}&page=${Movie.pageNumber}&include_adult=${false}`;
       
         
         // fetch(...).then(() => {...}).catch(() => {...});
@@ -196,7 +228,7 @@ function filterGenre(genres,data) {
     
             let results = []
             const noOfTitles = Object.keys(responseJson.results).length
-    
+            
         
             //creates an object for each movie
             for(let i = 0; i < noOfTitles; i++) {
@@ -208,7 +240,8 @@ function filterGenre(genres,data) {
     
             //list of the top 3 results
             if(inputType == 'click') {
-                for(let i = 0; i < noOfTitles; i++) {
+                //Movie.getPages(responseJson)
+                for(let i = 0; i < results.length; i++) {
                     results[i].createCard()
                 }
 
@@ -225,6 +258,7 @@ function filterGenre(genres,data) {
         }
     });
  }
+
 
  displayObject(submitButton, "click", 25)
  displayObject(queryField, "keydown", 3)

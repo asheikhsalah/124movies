@@ -2,6 +2,7 @@
 *{
     font-family: 'Cairo', sans-serif;
     color:white;
+    
 }   
 body {
     margin: 0;
@@ -178,6 +179,7 @@ input:focus {outline:none;}
     color: transparent;
     font-weight: 700;
     padding: 10px;
+    max-height: 50%;
     
 
 }
@@ -198,7 +200,11 @@ footer {
     border: 1px solid rgba(255, 255, 255, 0.3);
 
 }
+.page-number-container {
+    height: 50px;
+    width: 50px;
 
+}
 
 
 @media (min-width : 600px) {
